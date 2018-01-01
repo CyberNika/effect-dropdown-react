@@ -10,12 +10,13 @@ const BASE = {
 }
 
 class EffectDropdownItem extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       hover: false,
       randomLeft: '',
+      randomTransform: this.transform,
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -25,15 +26,17 @@ class EffectDropdownItem extends Component {
 
   componentWillReceiveProps (nextProps) {
     const { effect, active } = this.props
+    const nextActive = nextProps.active
 
-    if (active !== nextProps.active) {
+    if (active !== nextActive) {
       this.setState({
         hover: false,
       })
 
       if (effect === 'random') {
         this.setState({
-          randomLeft: active ? `${Math.floor((Math.random() * 10) - 5)}px` : 0,
+          randomLeft: nextActive ? `${Math.floor((Math.random() * 10) - 5)}px` : 0,
+          randomTransform: this.getRandomTransform(nextActive),
         })
       }
     }
@@ -105,7 +108,7 @@ class EffectDropdownItem extends Component {
 
     const commonStyle = {
       top,
-      transform: this.transform,
+      transform: this.props.effect === 'random' ? this.state.randomTransform : this.transform,
       zIndex: BASE.zIndex - (index + 1),
     }
 
@@ -160,12 +163,30 @@ class EffectDropdownItem extends Component {
     }
   }
 
+  getRandomTransform (active = false) {
+    const scale = 1 - (this.props.index / 100)
+
+    const value = active ? {
+      scale3d: [1, 1, 1],
+      rotate: `${((Math.random() * 10) - 5).toFixed(2)}deg`,
+    } : {
+      scale3d: [scale, scale, 1],
+      rotate: 0,
+    }
+
+    return transform(value)
+  }
+
   handleClick (event) {
     const { disabled, autoHide, handleHide, onClick } = this.props
 
     if (disabled) return
 
-    onClick && onClick(this, event)
+    onClick && onClick({
+      item: this,
+      index: this.props.index,
+      event,
+    })
 
     autoHide && handleHide()
   }
@@ -180,7 +201,11 @@ class EffectDropdownItem extends Component {
       hover: true,
     })
 
-    onMouseEnter && onMouseEnter(this, event)
+    onMouseEnter && onMouseEnter({
+      item: this,
+      index: this.props.index,
+      event,
+    })
   }
 
   handleMouseLeave (event) {
@@ -192,7 +217,11 @@ class EffectDropdownItem extends Component {
       hover: false,
     })
 
-    onMouseLeave && onMouseLeave(this, event)
+    onMouseLeave && onMouseLeave({
+      item: this,
+      index: this.props.index,
+      event,
+    })
   }
 
   render () {
