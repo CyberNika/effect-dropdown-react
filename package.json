@@ -1,0 +1,80 @@
+{
+  "name": "effect-dropdown-react",
+  "description": "Simple effects of Dropdown for React.js.",
+  "version": "0.1.0",
+  "author": "XBT1 <xbtop1@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.common.js",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "dropdown",
+    "react-dropdown",
+    "react-component",
+    "react",
+    "effects"
+  ],
+  "scripts": {
+    "dev": "webpack-dev-server --config examples/webpack.config.js --content-base examples/ --hot",
+    "build": "npm run build:package & npm run build:example",
+    "build:package": "rm -fr dist && rollup -c && stylus src/styles/index.styl --out dist",
+    "build:example": "rm -fr sites && webpack --config examples/webpack.config.js --progress --hide-modules && cp examples/index.html sites",
+    "prepublishOnly": "npm run lint && npm run build:package",
+    "lint": "eslint --ext .js,.jsx src",
+    "lint:fix": "eslint --ext .js,.jsx src --fix",
+    "ghpages": "npm run build:example && node build/gh-pages.js"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "file-loader": "^1.1.6",
+    "fs-extra": "^5.0.0",
+    "gh-pages": "^1.1.0",
+    "rollup": "^0.52.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "style-loader": "^0.19.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XBT1/effect-dropdown-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XBT1/effect-dropdown-react/issues"
+  },
+  "homepage": "https://github.com/XBT1/effect-dropdown-react",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  }
+}

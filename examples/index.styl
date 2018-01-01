@@ -1,0 +1,116 @@
+dropdown-wrapper-height = 150px
+
+html
+  height: 100%
+
+body
+  margin: 0
+  height: 100%
+  color: #333
+  font-size: 16px
+  line-height: 1.5
+  background: url("https://tympanus.net/Development/SimpleDropDownEffects/images/grid_DominikKiss_SubtlePatterns.jpg")
+
+#app
+  position: relative
+  max-width: 1000px
+  margin: 0 auto
+  overflow: hidden
+
+header
+  margin-top: 50px
+  text-align: center
+
+  .react-logo
+    width: 90px
+
+  h1
+    margin: 0
+    font-size: 48px
+
+  .description
+    margin: 5px 0 12px
+    color: #555
+
+  .github-link
+    position: absolute
+    top: 25px
+    right: 40px
+
+main
+  padding: 40px 0 60px
+
+.dropdown-wrapper
+  padding: 10px
+  margin: 20px
+  height: dropdown-wrapper-height
+
+  &:nth-child(odd)
+    .dropdown-desc
+      float: left
+      padding-right: 25px
+
+  &:nth-child(even)
+    .dropdown-desc
+      float: right
+      padding-left: 25px
+
+  .dropdown-main
+    text-align: center
+
+    [class^=ion]
+      display: inline-block
+      width: 20px
+      margin-right: 5px
+      text-align: center
+      font-size: 160%
+
+  .dropdown-desc
+    padding-top: 5px
+    margin: 0
+    width: 50%
+    color: #aaa
+    font-size: 18px
+    line-height: 1.2
+    font-weight: 300
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8)
+
+    .source-link
+      color: rgba(#999, 0.6)
+      font-size: 14px
+
+footer
+  padding: 10px 0 20px
+  text-align: center
+  color: #c3c8cd
+
+  a
+    color: #c3c8cd
+
+  p
+    margin: 0
+
+@media (max-width: 640px)
+  header
+    margin-top: 35px
+
+    .react-logo
+      width: 70px
+
+    h1
+      font-size: 30px
+
+  main
+    padding-top: 10px
+
+    .dropdown-wrapper
+      margin: 20px 10px 60px
+      height: auto
+
+      .dropdown-desc
+        float: none !important
+        width: 100%
+        padding: 0 !important
+
+      .dropdown-main
+        margin-top: 20px
