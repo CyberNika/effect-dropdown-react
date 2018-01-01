@@ -1,0 +1,112 @@
+
+dropdown-item-color = #bcbcbc
+
+$menu-item
+  width: 100%
+  height: menu-height
+  background-color: #fff
+  line-height: menu-height
+  box-sizing: border-box
+  cursor: pointer
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
+
+  &:focus
+    outline: none
+
+$text-overflow
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+
+.effect-dropdown
+  position: relative
+  display: inline-block
+  width: menu-width
+  color: #333
+  text-align: left
+  font-weight: 700
+
+  &:not(.effect-dropdown--active)
+    .effect-dropdown-item
+      &:first-child
+        box-shadow: none
+
+  &.effect-dropdown--active
+    .effect-dropdown__label-caret
+      &::after
+        transform: rotate(-90deg)
+
+    .effect-dropdown-item--camber
+      transform-origin: -200% 50%
+
+  .effect-dropdown__label
+    @extend $menu-item
+    @extend $text-overflow
+
+    position: relative
+    display: inline-block
+    padding: 0 menu-padding-horizontal
+    color: #999
+    z-index: 1500
+
+
+    &.effect-dropdown__label--raise
+      transition: transform .3s
+      transform-origin: 50% 0%
+      transform-style: preserve-3d
+
+      &:active
+        transform: rotateX(60deg)
+        box-shadow: 0 1px 1px #ccc
+
+  .effect-dropdown__label-caret
+    position: absolute
+    padding-left: 16px
+    padding-right: 6px
+    right: 10px
+
+    &::before
+      content: ""
+      position: absolute
+      left: 0
+      top: 25%
+      width: 1px
+      height: 50%
+      background-color: #ddd
+
+    &::after
+      display: inline-block
+      transition: transform 0.3s
+      transform: rotate(90deg)
+      content: "\e622"
+
+  .effect-dropdown__content
+    padding-left: 0
+    margin: 0
+    width: 100%
+    color: dropdown-item-color
+
+  .effect-dropdown-item
+    @extend $menu-item
+
+    position: absolute
+    top: 0
+    left: 0
+    transition: all 0.3s ease
+    overflow: hidden
+
+    .effect-dropdown-item__label
+      @extend $text-overflow
+
+      display: inline-block
+      padding: 0 menu-padding-horizontal
+      width: 100%
+      box-sizing: border-box
+      transition: all 0.2s linear
+
+      & > *
+        vertical-align: middle
+
+  .effect-dropdown-item--disabled
+    color: rgba(dropdown-item-color, 0.35)
+    cursor: not-allowed
