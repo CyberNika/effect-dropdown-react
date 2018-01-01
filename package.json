@@ -1,7 +1,7 @@
 {
   "name": "effect-dropdown-react",
   "description": "Simple effects of Dropdown for React.js.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "XBT1 <xbtop1@gmail.com>",
   "license": "MIT",
   "main": "dist/index.common.js",
