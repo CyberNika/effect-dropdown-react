@@ -86,7 +86,7 @@ class EffectDropdown extends Component {
       gutter,
       autoHide,
       active,
-      itemCount: children.length,
+      itemCount: React.Children.count(children),
     }
 
     return (
@@ -103,7 +103,7 @@ class EffectDropdown extends Component {
         </span>
 
         <ul className="effect-dropdown__content">
-          {children.map((c, index) => {
+          {React.Children.map(children, (c, index) => {
             const newChildrenProps = {
               ...c.props,
               ...dropdownItemProps,
@@ -127,7 +127,10 @@ EffectDropdown.propTypes = {
   gutter: PropTypes.number,
   activeColor: PropTypes.string,
   autoHide: PropTypes.bool,
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.object,
+  ]),
 }
 
 EffectDropdown.defaultProps = {
