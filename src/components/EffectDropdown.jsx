@@ -80,7 +80,7 @@ class EffectDropdown extends Component {
 
   render () {
     const { effect, gutter, autoHide, children } = this.props
-    const { active } = this.state;
+    const { active } = this.state
     const dropdownItemProps = {
       effect,
       gutter,
@@ -103,18 +103,6 @@ class EffectDropdown extends Component {
         </span>
 
         <ul className="effect-dropdown__content">
-          {/* props.children 在没有传入children时，是 undefined, 传入一个children时，是Object，只有2个及以上才是Array，所以直接用this.props.children去循环的话，会直接报错，是个大Bug */}
-          {/* {children.map((c, index) => {
-            const newChildrenProps = {
-              ...c.props,
-              ...dropdownItemProps,
-              key: c.key || index,
-              index,
-              handleHide: this.hide,
-            }
-
-            return React.cloneElement(c, newChildrenProps)
-          })} */}
           {React.Children.map(children, (c, index) => {
             const newChildrenProps = {
               ...c.props,
@@ -141,7 +129,7 @@ EffectDropdown.propTypes = {
   autoHide: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.object
+    PropTypes.object,
   ]),
 }
 
