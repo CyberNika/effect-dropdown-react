@@ -183,9 +183,8 @@ class EffectDropdownItem extends Component {
     if (disabled) return
 
     onClick && onClick({
-      item: this,
+      value: event.target.innerText,
       index: this.props.index,
-      event,
     })
 
     autoHide && handleHide()

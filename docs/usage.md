@@ -18,10 +18,10 @@
 | 参数         | 说明             | 类型    | 可选值 | 默认值      |
 | ----------- | ---------------- | ------ | ----- | ---------- |
 | effect      | 效果类型 | String | 见下 `EFFECT_LIST` | simple |
-| label       | 标题             | String  | --    | -- |
+| placeholder       | 标题             | String  | --    | -- |
 | gutter      | 激活时选项之间间隔 | Number | --    | 5 |
 | activeColor | 激活时主色        | String  | 标准 css 颜色值 | #fc756f |
-| raiseLabel  | 激活时 label 是否有 3d 效果  | Boolean | true / false | false |
+| raiseLabel  | 激活时 placeholder 是否有 3d 效果  | Boolean | true / false | false |
 | autoHide  | 点击外部或选项后是否自动隐藏  | Boolean | true / false | true |
 
 - `EFFECT_LIST` 取值

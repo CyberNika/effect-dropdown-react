@@ -63,8 +63,8 @@ const App = () => (
         </p>
 
         <div className="dropdown-main">
-          <EffectDropdown label="Pick your direction" style={{ zIndex: 4000 }}>
-            <EffectDropdownItem onClick={(args) => { console.log(args) }}>
+          <EffectDropdown placeholder="Pick your direction" style={{ zIndex: 4000 }}>
+            <EffectDropdownItem>
               <i className="ion-arrow-up-c" />
               <span>Up</span>
             </EffectDropdownItem>
@@ -99,7 +99,7 @@ const App = () => (
         </p>
 
         <div className="dropdown-main">
-          <EffectDropdown label="Choose your pet" activeColor="#4d8c9d" effect="random" style={{ zIndex: 3500 }}>
+          <EffectDropdown placeholder="Choose your pet" activeColor="#4d8c9d" effect="random" style={{ zIndex: 3500 }}>
             <EffectDropdownItem>Husky</EffectDropdownItem>
             <EffectDropdownItem>Shorthair</EffectDropdownItem>
             <EffectDropdownItem>Monkey</EffectDropdownItem>
@@ -123,7 +123,7 @@ const App = () => (
         </p>
 
         <div className="dropdown-main">
-          <EffectDropdown label="Set the currency" activeColor="#97d1bc" effect="camber" style={{ zIndex: 3400 }}>
+          <EffectDropdown placeholder="Set the currency" activeColor="#97d1bc" effect="camber" style={{ zIndex: 3400 }}>
             <EffectDropdownItem disabled>
               <i className="ion-social-usd" />
               <span>USD</span>
@@ -161,7 +161,7 @@ const App = () => (
 
         <div className="dropdown-main">
           <EffectDropdown
-            label="Select your platform"
+            placeholder="Select your platform"
             activeColor="#f8b161"
             raiseLabel
             gutter={0}
@@ -203,7 +203,7 @@ const App = () => (
 
         <div className="dropdown-main">
           <EffectDropdown
-            label="Select your technology"
+            placeholder="Select your technology"
             activeColor="#c29ad2"
             effect="stagger"
             style={{ zIndex: 3200 }}
@@ -247,7 +247,7 @@ const App = () => (
         </p>
 
         <div className="dropdown-main">
-          <EffectDropdown label="Share to..." activeColor="#e66b20" effect="fence" style={{ zIndex: 3000 }}>
+          <EffectDropdown placeholder="Share to..." activeColor="#e66b20" effect="fence" style={{ zIndex: 3000 }}>
             <EffectDropdownItem>
               <i className="ion-social-twitter" />
               <span>Twitter</span>

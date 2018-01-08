@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import { classnames } from '../utils/index'
 
 class EffectDropdown extends Component {
-  constructor () {
+  constructor (props) {
     super()
 
     this.state = {
       active: false,
+      value: props.placeholder,
     }
 
     this.$el = null
@@ -16,6 +17,7 @@ class EffectDropdown extends Component {
     this.toggle = this.toggle.bind(this)
     this.hide = this.hide.bind(this)
     this.handleBodyClick = this.handleBodyClick.bind(this)
+    this.childClick = this.childClick.bind(this)
   }
 
   componentWillUpdate (nextProps, nextState) {
@@ -78,9 +80,17 @@ class EffectDropdown extends Component {
     }
   }
 
+  childClick (json = {}) {
+    // console.log(json)
+    const { value } = json
+    this.setState({
+      value,
+    })
+  }
+
   render () {
     const { effect, gutter, autoHide, children } = this.props
-    const { active } = this.state
+    const { active, value } = this.state
     const dropdownItemProps = {
       effect,
       gutter,
@@ -88,7 +98,6 @@ class EffectDropdown extends Component {
       active,
       itemCount: React.Children.count(children),
     }
-
     return (
       <div ref={(el) => { this.$el = el }} className={this.dropdownCls} role="menu">
         <span
@@ -98,7 +107,7 @@ class EffectDropdown extends Component {
           style={this.labelStyle}
           onClick={this.toggle}
         >
-          {this.props.label}
+          {value}
           <i className="effect-dropdown__label-caret effect-dropdown-iconfont" />
         </span>
 
@@ -110,6 +119,7 @@ class EffectDropdown extends Component {
               key: c.key || index,
               index,
               handleHide: this.hide,
+              onClick: this.childClick,
             }
 
             return React.cloneElement(c, newChildrenProps)
@@ -121,7 +131,7 @@ class EffectDropdown extends Component {
 }
 
 EffectDropdown.propTypes = {
-  label: PropTypes.string,
+  placeholder: PropTypes.string,
   raiseLabel: PropTypes.bool,
   effect: PropTypes.oneOf(['simple', 'random', 'camber', 'stagger', 'fence']),
   gutter: PropTypes.number,
@@ -135,7 +145,7 @@ EffectDropdown.propTypes = {
 
 EffectDropdown.defaultProps = {
   effect: 'simple',
-  label: '',
+  placeholder: '',
   raiseLabel: false,
   gutter: 5,
   activeColor: '#fc756f',
